@@ -15,17 +15,20 @@ class About_Screen extends StatelessWidget {
         MediaQuery.of(context).padding.top -
         AppBar().preferredSize.height;
 
+    final double paddingLR = MediaQuery.of(context).size.width * 0.07;
+    final double paddingTB = MediaQuery.of(context).size.width * 0.04;
+
     return SafeArea(
       child: Scaffold(
         appBar: const AppBar_Module(),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              buildHero(usableHeight, context),
-              buildIntroduction(usableHeight, context),
-              buildInsights(usableHeight, context),
-              buildTeam(usableHeight, context),
-              buildPartners(usableHeight, context),
+              buildHero(usableHeight, paddingLR, paddingTB, context),
+              buildIntroduction(usableHeight, paddingLR, paddingTB, context),
+              buildInsights(usableHeight, paddingLR, paddingTB, context),
+              buildTeam(usableHeight, paddingLR, paddingTB, context),
+              buildPartners(usableHeight, paddingLR, paddingTB, context),
               const Footer_Module(),
             ],
           ),
@@ -34,36 +37,18 @@ class About_Screen extends StatelessWidget {
     );
   }
 
-  Column buildPartners(double usableHeight, context) {
-    return Column(
-      children: [
-        Text(
-          'Unsere Partner',
-          style: Theme.of(context).textTheme.headline2,
-        ),
-        Text(
-          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-      ],
-    );
-  }
-
-  Container buildTeam(double usableHeight, context) {
-    return Container(
-      height: usableHeight * 0.35,
-      width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('lib/assets/images/background_header.jpg'),
-          fit: BoxFit.cover,
-        ),
-      ),
+  Padding buildPartners(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
         children: [
-          Text(
-            'Das Team',
-            style: Theme.of(context).textTheme.headline2,
+          Padding(
+            padding: EdgeInsets.only(bottom: paddingTB),
+            child: Text(
+              'Unsere Partner',
+              style: Theme.of(context).textTheme.headline2,
+            ),
           ),
           Text(
             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
@@ -74,67 +59,178 @@ class About_Screen extends StatelessWidget {
     );
   }
 
-  Column buildInsights(double usableHeight, context) {
-    return Column(
-      children: [
-        Text(
-          'News & Insights',
-          style: Theme.of(context).textTheme.headline2,
-        ),
-        Container(
-          height: usableHeight * 0.3,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('lib/assets/images/background_header.jpg'),
-              fit: BoxFit.cover,
-            ),
+  Padding buildTeam(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
+      child: Container(
+        height: usableHeight * 0.5,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/assets/images/background_header.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
-        Text(
-          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-        Container(
-          height: usableHeight * 0.3,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('lib/assets/images/background_header.jpg'),
-              fit: BoxFit.cover,
-            ),
+        child: Padding(
+          padding:
+              EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(bottom: paddingTB),
+                child: Text(
+                  'Das Team',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
+              ),
+              Text(
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ],
           ),
         ),
-        Text(
-          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-        Container(
-          height: usableHeight * 0.3,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('lib/assets/images/background_header.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Text(
-          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-      ],
+      ),
     );
   }
 
-  Text buildIntroduction(double usableHeight, context) {
-    return Text(
-      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-      style: Theme.of(context).textTheme.bodyText1,
+  Padding buildInsights(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+      child: Column(
+        children: [
+          Text(
+            'News & Insights',
+            style: Theme.of(context).textTheme.headline2,
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
+            child: Column(
+              children: [
+                Container(
+                  height: usableHeight * 0.3,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image:
+                          AssetImage('lib/assets/images/background_header.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      top: BorderSide.none,
+                      right: BorderSide(width: 1, color: Color(0xff9cd1be)),
+                      bottom: BorderSide(width: 1, color: Colors.teal),
+                      left: BorderSide(width: 1, color: Colors.teal),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        paddingLR, paddingTB, paddingLR, paddingTB),
+                    child: Text(
+                      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
+            child: Column(
+              children: [
+                Container(
+                  height: usableHeight * 0.3,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image:
+                          AssetImage('lib/assets/images/background_header.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      top: BorderSide.none,
+                      right: BorderSide(width: 1, color: Color(0xff9cd1be)),
+                      bottom: BorderSide(width: 1, color: Colors.teal),
+                      left: BorderSide(width: 1, color: Colors.teal),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        paddingLR, paddingTB, paddingLR, paddingTB),
+                    child: Text(
+                      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
+            child: Column(
+              children: [
+                Container(
+                  height: usableHeight * 0.3,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image:
+                          AssetImage('lib/assets/images/background_header.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      top: BorderSide.none,
+                      right: BorderSide(width: 1, color: Color(0xff9cd1be)),
+                      bottom: BorderSide(width: 1, color: Colors.teal),
+                      left: BorderSide(width: 1, color: Colors.teal),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        paddingLR, paddingTB, paddingLR, paddingTB),
+                    child: Text(
+                      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Container buildHero(double usableHeight, context) {
+  Padding buildIntroduction(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(paddingLR, 0.0, paddingLR, paddingTB),
+      child: Text(
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+    );
+  }
+
+  Container buildHero(
+      double usableHeight, double paddingLR, double paddingTB, context) {
     return Container(
       height: usableHeight * 0.5,
       width: MediaQuery.of(context).size.width,
@@ -144,11 +240,14 @@ class About_Screen extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-      child: Align(
-        alignment: Alignment.bottomLeft,
-        child: Text(
-          'Über Uns',
-          style: Theme.of(context).textTheme.headline1,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+        child: Align(
+          alignment: Alignment.bottomLeft,
+          child: Text(
+            'Über Uns',
+            style: Theme.of(context).textTheme.headline1,
+          ),
         ),
       ),
     );

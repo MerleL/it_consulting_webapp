@@ -20,16 +20,19 @@ class _Contact_ScreenState extends State<Contact_Screen> {
         MediaQuery.of(context).padding.top -
         AppBar().preferredSize.height;
 
+    final double paddingLR = MediaQuery.of(context).size.width * 0.07;
+    final double paddingTB = MediaQuery.of(context).size.width * 0.04;
+
     return SafeArea(
       child: Scaffold(
         appBar: const AppBar_Module(),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              buildHero(usableHeight),
-              buildIntroduction(usableHeight, context),
-              buildContact(usableHeight),
-              buildForm(usableHeight),
+              buildHero(usableHeight, paddingLR, paddingTB, context),
+              buildIntroduction(usableHeight, paddingLR, paddingTB, context),
+              buildContact(usableHeight, paddingLR, paddingTB, context),
+              buildForm(usableHeight, paddingLR, paddingTB, context),
               const Footer_Module(),
             ],
           ),
@@ -38,26 +41,39 @@ class _Contact_ScreenState extends State<Contact_Screen> {
     );
   }
 
-  Placeholder buildForm(double usableHeight) {
-    return Placeholder(
-              fallbackHeight: usableHeight,
-            );
-  }
-
-  Placeholder buildContact(double usableHeight) {
-    return Placeholder(
-              fallbackHeight: usableHeight * 0.7,
-            );
-  }
-
-  Text buildIntroduction(double usableHeight, context) {
-    return Text(
-      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
-      style: Theme.of(context).textTheme.bodyText1,
+  Padding buildForm(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+      child: Placeholder(
+        fallbackHeight: usableHeight,
+      ),
     );
   }
 
-  Container buildHero(double usableHeight) {
+  Padding buildContact(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+      child: Placeholder(
+        fallbackHeight: usableHeight * 0.7,
+      ),
+    );
+  }
+
+  Padding buildIntroduction(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+      child: Text(
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+    );
+  }
+
+  Container buildHero(
+      double usableHeight, double paddingLR, double paddingTB, context) {
     return Container(
       height: usableHeight * 0.5,
       width: MediaQuery.of(context).size.width,
@@ -67,11 +83,15 @@ class _Contact_ScreenState extends State<Contact_Screen> {
           fit: BoxFit.cover,
         ),
       ),
-      child: Align(
-        alignment: Alignment.bottomLeft,
-        child: Text(
-          'Kontakt',
-          style: Theme.of(context).textTheme.headline1,
+      child: Padding(
+        padding:
+            EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+        child: Align(
+          alignment: Alignment.bottomLeft,
+          child: Text(
+            'Kontakt',
+            style: Theme.of(context).textTheme.headline1,
+          ),
         ),
       ),
     );

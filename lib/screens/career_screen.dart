@@ -15,17 +15,20 @@ class Career_Screen extends StatelessWidget {
         MediaQuery.of(context).padding.top -
         AppBar().preferredSize.height;
 
+    final double paddingLR = MediaQuery.of(context).size.width * 0.07;
+    final double paddingTB = MediaQuery.of(context).size.width * 0.04;
+
     return SafeArea(
       child: Scaffold(
         appBar: const AppBar_Module(),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              buildHero(usableHeight, context),
-              buildIntroduction(usableHeight, context),
-              buildBenefits(usableHeight),
-              buildJobs(usableHeight, context),
-              buildContact(usableHeight, context),
+              buildHero(usableHeight, paddingLR, paddingTB, context),
+              buildIntroduction(usableHeight, paddingLR, paddingTB, context),
+              buildBenefits(usableHeight, paddingLR, paddingTB, context),
+              buildJobs(usableHeight, paddingLR, paddingTB, context),
+              buildContact(usableHeight, paddingLR, paddingTB, context),
               const Footer_Module(),
             ],
           ),
@@ -34,97 +37,133 @@ class Career_Screen extends StatelessWidget {
     );
   }
 
-  Column buildContact(double usableHeight, context) {
-    return Column(
-      children: [
-        Text(
-          'Nichts dabei?',
-          style: Theme.of(context).textTheme.headline2,
-        ),
-        Text(
-          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-      ],
-    );
-  }
-
-  Column buildJobs(double usableHeight, context) {
-    return Column(
-      children: [
-        Container(
-          height: usableHeight * 0.2,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                  'lib/assets/images/background_hero_leftbottom.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Align(
-            alignment: Alignment.bottomLeft,
+  Padding buildContact(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(bottom: paddingTB),
             child: Text(
-              'Stellenausschreibungen',
+              'Nichts dabei?',
               style: Theme.of(context).textTheme.headline2,
             ),
           ),
-        ),
-        Container(
-          height: usableHeight * 0.3,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('lib/assets/images/background_header.jpg'),
-              fit: BoxFit.cover,
-            ),
+          Text(
+            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+            style: Theme.of(context).textTheme.bodyText1,
           ),
-        ),
-        Container(
-          height: usableHeight * 0.3,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('lib/assets/images/background_header.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Container(
-          height: usableHeight * 0.3,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('lib/assets/images/background_header.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
-  Placeholder buildBenefits(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.7,
+  Padding buildJobs(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
+      child: Column(
+        children: [
+          Container(
+            height: usableHeight * 0.2,
+            width: MediaQuery.of(context).size.width,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                    'lib/assets/images/background_hero_leftbottom.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                  paddingLR, paddingTB, paddingLR, paddingTB),
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  'Stellen-ausschreibungen',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding:
+                EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+            child: Container(
+              height: usableHeight * 0.3,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('lib/assets/images/background_header.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding:
+                EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+            child: Container(
+              height: usableHeight * 0.3,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('lib/assets/images/background_header.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding:
+                EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+            child: Container(
+              height: usableHeight * 0.3,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('lib/assets/images/background_header.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Column buildIntroduction(double usableHeight, context) {
-    return Column(
-      children: [
-        Text(
-          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-        Placeholder(
-          fallbackHeight: usableHeight * 0.1,
-        ),
-      ],
+  Padding buildBenefits(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+      child: Placeholder(
+        fallbackHeight: usableHeight * 0.7,
+      ),
     );
   }
 
-  Container buildHero(double usableHeight, context) {
+  Padding buildIntroduction(
+      double usableHeight, double paddingLR, double paddingTB, context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(paddingLR, 0.0, paddingLR, paddingTB),
+      child: Column(
+        children: [
+          Text(
+            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          Placeholder(
+            fallbackHeight: usableHeight * 0.1,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container buildHero(
+      double usableHeight, double paddingLR, double paddingTB, context) {
     return Container(
       height: usableHeight * 0.5,
       width: MediaQuery.of(context).size.width,
@@ -134,11 +173,15 @@ class Career_Screen extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-      child: Align(
-        alignment: Alignment.bottomLeft,
-        child: Text(
-          'Karriere',
-          style: Theme.of(context).textTheme.headline1,
+      child: Padding(
+        padding:
+            EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+        child: Align(
+          alignment: Alignment.bottomLeft,
+          child: Text(
+            'Karriere',
+            style: Theme.of(context).textTheme.headline1,
+          ),
         ),
       ),
     );
