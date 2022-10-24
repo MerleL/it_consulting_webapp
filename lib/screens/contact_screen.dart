@@ -57,9 +57,23 @@ class _Contact_ScreenState extends State<Contact_Screen> {
     );
   }
 
-  Placeholder buildHero(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.5,
+  Container buildHero(double usableHeight) {
+    return Container(
+      height: usableHeight * 0.5,
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('lib/assets/images/background_hero.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Text(
+          'Kontakt',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+      ),
     );
   }
 }

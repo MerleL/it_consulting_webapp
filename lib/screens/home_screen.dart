@@ -20,9 +20,9 @@ class Home_Screen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              buildHero(usableHeight),
+              buildHero(usableHeight, context),
               buildIntroduction(usableHeight, context),
-              buildNews(usableHeight),
+              buildNews(usableHeight, context),
               buildServices(usableHeight, context),
               buildCareer(usableHeight, context),
               buildStories(usableHeight, context),
@@ -40,7 +40,7 @@ class Home_Screen extends StatelessWidget {
       children: [
         Text(
           'Unsere Partner',
-          style: Theme.of(context).textTheme.headline1,
+          style: Theme.of(context).textTheme.headline2,
         ),
         Placeholder(
           fallbackHeight: usableHeight * 0.2,
@@ -54,7 +54,7 @@ class Home_Screen extends StatelessWidget {
       children: [
         Text(
           'Erfolgsgeschichten',
-          style: Theme.of(context).textTheme.headline1,
+          style: Theme.of(context).textTheme.headline2,
         ),
         Text(
           'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
@@ -64,18 +64,28 @@ class Home_Screen extends StatelessWidget {
     );
   }
 
-  Column buildCareer(double usableHeight, context) {
-    return Column(
-      children: [
-        Text(
-          'Werde Teil unseres Teams',
-          style: Theme.of(context).textTheme.headline1,
+  Container buildCareer(double usableHeight, context) {
+    return Container(
+      height: usableHeight * 0.35,
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('lib/assets/images/background_header.jpg'),
+          fit: BoxFit.cover,
         ),
-        Text(
-          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-      ],
+      ),
+      child: Column(
+        children: [
+          Text(
+            'Werde Teil unseres Teams',
+            style: Theme.of(context).textTheme.headline2,
+          ),
+          Text(
+            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+        ],
+      ),
     );
   }
 
@@ -84,7 +94,7 @@ class Home_Screen extends StatelessWidget {
       children: [
         Text(
           'Unsere Leistungen',
-          style: Theme.of(context).textTheme.headline1,
+          style: Theme.of(context).textTheme.headline2,
         ),
         Text(
           'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
@@ -94,9 +104,23 @@ class Home_Screen extends StatelessWidget {
     );
   }
 
-  Placeholder buildNews(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.1,
+  Container buildNews(double usableHeight, context) {
+    return Container(
+      height: usableHeight * 0.13,
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('lib/assets/images/background_header.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          'Besuchen Sie unsere Messe am 24.11.22',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ),
     );
   }
 
@@ -107,9 +131,25 @@ class Home_Screen extends StatelessWidget {
     );
   }
 
-  Placeholder buildHero(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.8,
+  Container buildHero(double usableHeight, context) {
+    return Container(
+      height: usableHeight * 0.8,
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('lib/assets/images/background_hero.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Text(
+          '''IT-
+CONSULTING
+          ''',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+      ),
     );
   }
 }

@@ -21,7 +21,7 @@ class About_Screen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              buildHero(usableHeight),
+              buildHero(usableHeight, context),
               buildIntroduction(usableHeight, context),
               buildInsights(usableHeight, context),
               buildTeam(usableHeight, context),
@@ -39,7 +39,7 @@ class About_Screen extends StatelessWidget {
       children: [
         Text(
           'Unsere Partner',
-          style: Theme.of(context).textTheme.headline1,
+          style: Theme.of(context).textTheme.headline2,
         ),
         Text(
           'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
@@ -49,18 +49,28 @@ class About_Screen extends StatelessWidget {
     );
   }
 
-  Column buildTeam(double usableHeight, context) {
-    return Column(
-      children: [
-        Text(
-          'Das Team',
-          style: Theme.of(context).textTheme.headline1,
+  Container buildTeam(double usableHeight, context) {
+    return Container(
+      height: usableHeight * 0.35,
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('lib/assets/images/background_header.jpg'),
+          fit: BoxFit.cover,
         ),
-        Text(
-          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-      ],
+      ),
+      child: Column(
+        children: [
+          Text(
+            'Das Team',
+            style: Theme.of(context).textTheme.headline2,
+          ),
+          Text(
+            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+        ],
+      ),
     );
   }
 
@@ -69,24 +79,45 @@ class About_Screen extends StatelessWidget {
       children: [
         Text(
           'News & Insights',
-          style: Theme.of(context).textTheme.headline1,
+          style: Theme.of(context).textTheme.headline2,
         ),
-        Placeholder(
-          fallbackHeight: usableHeight * 0.3,
+        Container(
+          height: usableHeight * 0.3,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('lib/assets/images/background_header.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         Text(
           'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
           style: Theme.of(context).textTheme.bodyText1,
         ),
-        Placeholder(
-          fallbackHeight: usableHeight * 0.3,
+        Container(
+          height: usableHeight * 0.3,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('lib/assets/images/background_header.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         Text(
           'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
           style: Theme.of(context).textTheme.bodyText1,
         ),
-        Placeholder(
-          fallbackHeight: usableHeight * 0.3,
+        Container(
+          height: usableHeight * 0.3,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('lib/assets/images/background_header.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         Text(
           'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
@@ -103,9 +134,23 @@ class About_Screen extends StatelessWidget {
     );
   }
 
-  Placeholder buildHero(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.5,
+  Container buildHero(double usableHeight, context) {
+    return Container(
+      height: usableHeight * 0.5,
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('lib/assets/images/background_hero.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Text(
+          'Über Uns',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+      ),
     );
   }
 }

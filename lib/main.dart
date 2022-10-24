@@ -14,9 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'IT-Consulting Company',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
         textTheme: const TextTheme(
-          headline1: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
+          headline1: TextStyle(fontSize: 55.0, fontWeight: FontWeight.bold),
+          headline2: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
           bodyText1: TextStyle(fontSize: 20.0),
         ),
       ),

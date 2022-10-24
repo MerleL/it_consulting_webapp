@@ -21,7 +21,7 @@ class Career_Screen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              buildHero(usableHeight),
+              buildHero(usableHeight, context),
               buildIntroduction(usableHeight, context),
               buildBenefits(usableHeight),
               buildJobs(usableHeight, context),
@@ -39,7 +39,7 @@ class Career_Screen extends StatelessWidget {
       children: [
         Text(
           'Nichts dabei?',
-          style: Theme.of(context).textTheme.headline1,
+          style: Theme.of(context).textTheme.headline2,
         ),
         Text(
           'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
@@ -52,18 +52,53 @@ class Career_Screen extends StatelessWidget {
   Column buildJobs(double usableHeight, context) {
     return Column(
       children: [
-        Text(
-          'Stellenausschreibungen',
-          style: Theme.of(context).textTheme.headline1,
+        Container(
+          height: usableHeight * 0.2,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                  'lib/assets/images/background_hero_leftbottom.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              'Stellenausschreibungen',
+              style: Theme.of(context).textTheme.headline2,
+            ),
+          ),
         ),
-        Placeholder(
-          fallbackHeight: usableHeight * 0.3,
+        Container(
+          height: usableHeight * 0.3,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('lib/assets/images/background_header.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
-        Placeholder(
-          fallbackHeight: usableHeight * 0.3,
+        Container(
+          height: usableHeight * 0.3,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('lib/assets/images/background_header.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
-        Placeholder(
-          fallbackHeight: usableHeight * 0.3,
+        Container(
+          height: usableHeight * 0.3,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('lib/assets/images/background_header.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
       ],
     );
@@ -89,9 +124,23 @@ class Career_Screen extends StatelessWidget {
     );
   }
 
-  Placeholder buildHero(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.5,
+  Container buildHero(double usableHeight, context) {
+    return Container(
+      height: usableHeight * 0.5,
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('lib/assets/images/background_hero.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Text(
+          'Karriere',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+      ),
     );
   }
 }
