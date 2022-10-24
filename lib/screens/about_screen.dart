@@ -22,10 +22,10 @@ class About_Screen extends StatelessWidget {
           child: Column(
             children: [
               buildHero(usableHeight),
-              buildIntroduction(usableHeight),
-              buildInsights(usableHeight),
-              buildTeam(usableHeight),
-              buildPartners(usableHeight),
+              buildIntroduction(usableHeight, context),
+              buildInsights(usableHeight, context),
+              buildTeam(usableHeight, context),
+              buildPartners(usableHeight, context),
               const Footer_Module(),
             ],
           ),
@@ -34,32 +34,72 @@ class About_Screen extends StatelessWidget {
     );
   }
 
-  Placeholder buildPartners(double usableHeight) {
-    return Placeholder(
-              fallbackHeight: usableHeight * 0.4,
-            );
-  }
-
-  Placeholder buildTeam(double usableHeight) {
-    return buildPartners(usableHeight);
-  }
-
-  Column buildInsights(double usableHeight) {
+  Column buildPartners(double usableHeight, context) {
     return Column(
       children: [
-        Placeholder(
-          fallbackHeight: usableHeight * 0.1,
+        Text(
+          'Unsere Partner',
+          style: Theme.of(context).textTheme.headline1,
         ),
-        buildPartners(usableHeight),
-        buildPartners(usableHeight),
-        buildPartners(usableHeight),
+        Text(
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
       ],
     );
   }
 
-  Placeholder buildIntroduction(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.8,
+  Column buildTeam(double usableHeight, context) {
+    return Column(
+      children: [
+        Text(
+          'Das Team',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+        Text(
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ],
+    );
+  }
+
+  Column buildInsights(double usableHeight, context) {
+    return Column(
+      children: [
+        Text(
+          'News & Insights',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+        Placeholder(
+          fallbackHeight: usableHeight * 0.3,
+        ),
+        Text(
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+        Placeholder(
+          fallbackHeight: usableHeight * 0.3,
+        ),
+        Text(
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+        Placeholder(
+          fallbackHeight: usableHeight * 0.3,
+        ),
+        Text(
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ],
+    );
+  }
+
+  Text buildIntroduction(double usableHeight, context) {
+    return Text(
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+      style: Theme.of(context).textTheme.bodyText1,
     );
   }
 

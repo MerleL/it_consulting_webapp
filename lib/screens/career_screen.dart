@@ -22,9 +22,10 @@ class Career_Screen extends StatelessWidget {
           child: Column(
             children: [
               buildHero(usableHeight),
-              buildIntroduction(usableHeight),
-              buildJobs(usableHeight),
-              buildContact(usableHeight),
+              buildIntroduction(usableHeight, context),
+              buildBenefits(usableHeight),
+              buildJobs(usableHeight, context),
+              buildContact(usableHeight, context),
               const Footer_Module(),
             ],
           ),
@@ -33,19 +34,28 @@ class Career_Screen extends StatelessWidget {
     );
   }
 
-  Placeholder buildContact(double usableHeight) {
-    return Placeholder(
-              fallbackHeight: usableHeight * 0.5,
-            );
-  }
-
-  Column buildJobs(double usableHeight) {
+  Column buildContact(double usableHeight, context) {
     return Column(
       children: [
-        Placeholder(
-          fallbackHeight: usableHeight * 0.2,
+        Text(
+          'Nichts dabei?',
+          style: Theme.of(context).textTheme.headline1,
         ),
-        buildBenefits(usableHeight),
+        Text(
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ],
+    );
+  }
+
+  Column buildJobs(double usableHeight, context) {
+    return Column(
+      children: [
+        Text(
+          'Stellenausschreibungen',
+          style: Theme.of(context).textTheme.headline1,
+        ),
         Placeholder(
           fallbackHeight: usableHeight * 0.3,
         ),
@@ -61,13 +71,21 @@ class Career_Screen extends StatelessWidget {
 
   Placeholder buildBenefits(double usableHeight) {
     return Placeholder(
-      fallbackHeight: usableHeight * 0.4,
+      fallbackHeight: usableHeight * 0.7,
     );
   }
 
-  Placeholder buildIntroduction(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.7,
+  Column buildIntroduction(double usableHeight, context) {
+    return Column(
+      children: [
+        Text(
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+        Placeholder(
+          fallbackHeight: usableHeight * 0.1,
+        ),
+      ],
     );
   }
 

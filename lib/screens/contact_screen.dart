@@ -27,7 +27,7 @@ class _Contact_ScreenState extends State<Contact_Screen> {
           child: Column(
             children: [
               buildHero(usableHeight),
-              buildIntroduction(usableHeight),
+              buildIntroduction(usableHeight, context),
               buildContact(usableHeight),
               buildForm(usableHeight),
               const Footer_Module(),
@@ -50,9 +50,10 @@ class _Contact_ScreenState extends State<Contact_Screen> {
             );
   }
 
-  Placeholder buildIntroduction(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.3,
+  Text buildIntroduction(double usableHeight, context) {
+    return Text(
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
+      style: Theme.of(context).textTheme.bodyText1,
     );
   }
 

@@ -21,12 +21,12 @@ class Home_Screen extends StatelessWidget {
           child: Column(
             children: [
               buildHero(usableHeight),
-              buildIntroduction(usableHeight),
+              buildIntroduction(usableHeight, context),
               buildNews(usableHeight),
-              buildServices(usableHeight),
-              buildCareer(usableHeight),
-              buildStories(usableHeight),
-              buildPartners(usableHeight),
+              buildServices(usableHeight, context),
+              buildCareer(usableHeight, context),
+              buildStories(usableHeight, context),
+              buildPartners(usableHeight, context),
               const Footer_Module(),
             ],
           ),
@@ -35,27 +35,62 @@ class Home_Screen extends StatelessWidget {
     );
   }
 
-  Placeholder buildPartners(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.4,
+  Column buildPartners(double usableHeight, context) {
+    return Column(
+      children: [
+        Text(
+          'Unsere Partner',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+        Placeholder(
+          fallbackHeight: usableHeight * 0.2,
+        ),
+      ],
     );
   }
 
-  Placeholder buildStories(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.7,
+  Column buildStories(double usableHeight, context) {
+    return Column(
+      children: [
+        Text(
+          'Erfolgsgeschichten',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+        Text(
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ],
     );
   }
 
-  Placeholder buildCareer(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.7,
+  Column buildCareer(double usableHeight, context) {
+    return Column(
+      children: [
+        Text(
+          'Werde Teil unseres Teams',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+        Text(
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ],
     );
   }
 
-  Placeholder buildServices(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.7,
+  Column buildServices(double usableHeight, context) {
+    return Column(
+      children: [
+        Text(
+          'Unsere Leistungen',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+        Text(
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ],
     );
   }
 
@@ -65,9 +100,10 @@ class Home_Screen extends StatelessWidget {
     );
   }
 
-  Placeholder buildIntroduction(double usableHeight) {
-    return Placeholder(
-      fallbackHeight: usableHeight * 0.5,
+  Text buildIntroduction(double usableHeight, context) {
+    return Text(
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+      style: Theme.of(context).textTheme.bodyText1,
     );
   }
 

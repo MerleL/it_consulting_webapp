@@ -15,6 +15,10 @@ class MyApp extends StatelessWidget {
       title: 'IT-Consulting Company',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: const TextTheme(
+          headline1: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
+          bodyText1: TextStyle(fontSize: 20.0),
+        ),
       ),
       home: const Home_Screen(),
     );
