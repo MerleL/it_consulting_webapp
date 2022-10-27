@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../modules/appbar_module.dart';
+import '../modules/drawer_module.dart';
 import '../modules/footer_module.dart';
 
 class Contact_Screen extends StatefulWidget {
@@ -26,6 +27,7 @@ class _Contact_ScreenState extends State<Contact_Screen> {
     return SafeArea(
       child: Scaffold(
         appBar: const AppBar_Module(),
+        drawer: const Drawer_Module(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -42,7 +44,7 @@ class _Contact_ScreenState extends State<Contact_Screen> {
   }
 
   Padding buildForm(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Placeholder(
@@ -52,7 +54,7 @@ class _Contact_ScreenState extends State<Contact_Screen> {
   }
 
   Padding buildContact(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Placeholder(
@@ -62,7 +64,7 @@ class _Contact_ScreenState extends State<Contact_Screen> {
   }
 
   Padding buildIntroduction(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Text(
@@ -73,7 +75,7 @@ class _Contact_ScreenState extends State<Contact_Screen> {
   }
 
   Container buildHero(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Container(
       height: usableHeight * 0.5,
       width: MediaQuery.of(context).size.width,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../modules/appbar_module.dart';
+import '../modules/drawer_module.dart';
 import '../modules/footer_module.dart';
 
 class Career_Screen extends StatelessWidget {
@@ -21,6 +22,7 @@ class Career_Screen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: const AppBar_Module(),
+        drawer: const Drawer_Module(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -38,7 +40,7 @@ class Career_Screen extends StatelessWidget {
   }
 
   Padding buildContact(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
@@ -60,7 +62,7 @@ class Career_Screen extends StatelessWidget {
   }
 
   Padding buildJobs(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
       child: Column(
@@ -135,7 +137,7 @@ class Career_Screen extends StatelessWidget {
   }
 
   Padding buildBenefits(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Placeholder(
@@ -163,7 +165,7 @@ class Career_Screen extends StatelessWidget {
   }
 
   Container buildHero(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Container(
       height: usableHeight * 0.5,
       width: MediaQuery.of(context).size.width,

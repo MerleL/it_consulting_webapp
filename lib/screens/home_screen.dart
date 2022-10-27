@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:it_consulting_webapp/modules/appbar_module.dart';
+import 'package:it_consulting_webapp/modules/drawer_module.dart';
 import 'package:it_consulting_webapp/modules/footer_module.dart';
 
 class Home_Screen extends StatelessWidget {
@@ -20,6 +21,7 @@ class Home_Screen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: const AppBar_Module(),
+        drawer: const Drawer_Module(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -124,7 +126,7 @@ class Home_Screen extends StatelessWidget {
   }
 
   Padding buildServices(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
@@ -149,7 +151,7 @@ class Home_Screen extends StatelessWidget {
   }
 
   Padding buildNews(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
       child: Container(
@@ -174,7 +176,7 @@ class Home_Screen extends StatelessWidget {
   }
 
   Padding buildIntroduction(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, 0.0, paddingLR, paddingTB),
       child: Text(
@@ -185,7 +187,7 @@ class Home_Screen extends StatelessWidget {
   }
 
   Container buildHero(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Container(
       height: usableHeight * 0.8,
       width: MediaQuery.of(context).size.width,

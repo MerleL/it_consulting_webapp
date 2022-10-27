@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../modules/appbar_module.dart';
+import '../modules/drawer_module.dart';
 import '../modules/footer_module.dart';
 
 class About_Screen extends StatelessWidget {
@@ -21,6 +22,7 @@ class About_Screen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: const AppBar_Module(),
+        drawer: const Drawer_Module(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -38,7 +40,7 @@ class About_Screen extends StatelessWidget {
   }
 
   Padding buildPartners(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
@@ -60,7 +62,7 @@ class About_Screen extends StatelessWidget {
   }
 
   Padding buildTeam(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
       child: Container(
@@ -96,7 +98,7 @@ class About_Screen extends StatelessWidget {
   }
 
   Padding buildInsights(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
@@ -219,7 +221,7 @@ class About_Screen extends StatelessWidget {
   }
 
   Padding buildIntroduction(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, 0.0, paddingLR, paddingTB),
       child: Text(
@@ -230,7 +232,7 @@ class About_Screen extends StatelessWidget {
   }
 
   Container buildHero(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
     return Container(
       height: usableHeight * 0.5,
       width: MediaQuery.of(context).size.width,
