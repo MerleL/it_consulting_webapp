@@ -18,11 +18,14 @@ class Home_Screen extends StatelessWidget {
     final double paddingLR = MediaQuery.of(context).size.width * 0.07;
     final double paddingTB = MediaQuery.of(context).size.width * 0.04;
 
+    // ScrollController scrollController = ScrollController();
+
     return SafeArea(
       child: Scaffold(
         appBar: const AppBar_Module(),
         drawer: const Drawer_Module(),
         body: SingleChildScrollView(
+          // controller: scrollController,
           child: Column(
             children: [
               buildHero(usableHeight, paddingLR, paddingTB, context),
@@ -125,8 +128,8 @@ class Home_Screen extends StatelessWidget {
     );
   }
 
-  Padding buildServices(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildServices(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
@@ -150,8 +153,8 @@ class Home_Screen extends StatelessWidget {
     );
   }
 
-  Padding buildNews(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildNews(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
       child: Container(
@@ -175,8 +178,8 @@ class Home_Screen extends StatelessWidget {
     );
   }
 
-  Padding buildIntroduction(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildIntroduction(double usableHeight, double paddingLR,
+      double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, 0.0, paddingLR, paddingTB),
       child: Text(
@@ -186,8 +189,8 @@ class Home_Screen extends StatelessWidget {
     );
   }
 
-  Container buildHero(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Container buildHero(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Container(
       height: usableHeight * 0.8,
       width: MediaQuery.of(context).size.width,

@@ -22,6 +22,10 @@ class MyApp extends StatelessWidget {
           headline2: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
           bodyText1: TextStyle(fontSize: 20.0),
         ),
+        iconTheme: const IconThemeData(
+          color: Color(0xffcce7e6),
+          size: 30,
+        ),
       ),
       home: const Home_Screen(),
     );
