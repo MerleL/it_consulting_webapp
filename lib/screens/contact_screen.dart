@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:it_consulting_webapp/screens/notImplemented_screen.dart';
 
 import '../modules/appbar_module.dart';
 import '../modules/drawer_module.dart';
@@ -12,6 +13,8 @@ class Contact_Screen extends StatefulWidget {
 }
 
 class _Contact_ScreenState extends State<Contact_Screen> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     /* usable screen height = entire screen height - status bar height - appbar height
@@ -43,28 +46,155 @@ class _Contact_ScreenState extends State<Contact_Screen> {
     );
   }
 
-  Padding buildForm(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildForm(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
+    // Flutter Docs. "Build a form with validation." o.D. [Online] Available: https://docs.flutter.dev/cookbook/forms/validation (Abrufdatum 18.11.2022)
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
-      child: Placeholder(
-        fallbackHeight: usableHeight,
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            buildTextFormField('Vorname', 'Ihren Vornamen', 1),
+            buildTextFormField('Name', 'Ihren Namen', 1),
+            buildTextFormField('Email', 'Ihre E-Mail-Adresse', 1),
+            buildTextFormField('Telefon', 'Ihre Telefonnummer', 1),
+            buildTextFormField(
+                'Wie können wir Ihnen weiterhelfen?', 'Ihre Nachricht', 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // If the form is valid, display a snackbar. In the real world,
+                      // you'd often call a server or save the information in a database.
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text('Ihre Daten werden verarbeitet.')),
+                      );
+                    }
+                  },
+                  child: const Text('Senden'),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Padding buildContact(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildTextFormField(String useLabel, String hint, int min) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
-      child: Placeholder(
-        fallbackHeight: usableHeight * 0.7,
+      padding: const EdgeInsets.only(bottom: 10),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: useLabel,
+          border: const OutlineInputBorder(),
+        ),
+        maxLines: 10,
+        minLines: min,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Bitte geben Sie $hint ein!';
+          }
+          return null;
+        },
       ),
     );
   }
 
-  Padding buildIntroduction(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildContact(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+      child: Row(
+        children: [
+          Container(
+            height: usableHeight * 0.3,
+            width: MediaQuery.of(context).size.width / 2 - paddingLR - 5,
+            decoration: BoxDecoration(
+              border: Border.all(),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  Text(
+                    'Telefon: 1234567890',
+                    style: Theme.of(context).textTheme.bodyText1,
+                    textAlign: TextAlign.center,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: Text(
+                      'Mail: info@mail.com',
+                      style: Theme.of(context).textTheme.bodyText1,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Text(
+                    'Fax: 1234567890',
+                    style: Theme.of(context).textTheme.bodyText1,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Container(
+              height: usableHeight * 0.3,
+              width: MediaQuery.of(context).size.width / 2 - paddingLR - 5,
+              decoration: BoxDecoration(
+                border: Border.all(),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'Muster Str. 1 A',
+                      style: Theme.of(context).textTheme.bodyText1,
+                      textAlign: TextAlign.center,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Text(
+                        '12345 Musterstadt',
+                        style: Theme.of(context).textTheme.bodyText1,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    ElevatedButton(
+                      child: Text(
+                        'Standorte',
+                        style: Theme.of(context).textTheme.bodyText1,
+                        textAlign: TextAlign.center,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => NotImplemented_Screen(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding buildIntroduction(double usableHeight, double paddingLR,
+      double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Text(
@@ -74,8 +204,8 @@ class _Contact_ScreenState extends State<Contact_Screen> {
     );
   }
 
-  Container buildHero(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Container buildHero(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Container(
       height: usableHeight * 0.5,
       width: MediaQuery.of(context).size.width,
