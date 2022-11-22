@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:it_consulting_webapp/modules/appbar_module.dart';
 import 'package:it_consulting_webapp/modules/drawer_module.dart';
 import 'package:it_consulting_webapp/modules/footer_module.dart';
+import 'package:it_consulting_webapp/screens/about_screen.dart';
+import 'package:it_consulting_webapp/screens/career_screen.dart';
+import 'package:it_consulting_webapp/screens/notImplemented_screen.dart';
 
 class Home_Screen extends StatelessWidget {
   const Home_Screen({Key? key}) : super(key: key);
@@ -43,61 +46,81 @@ class Home_Screen extends StatelessWidget {
     );
   }
 
-  Padding buildPartners(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+  Padding buildPartners(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: paddingTB),
-              child: Text(
-                'Unsere Partner',
-                style: Theme.of(context).textTheme.headline2,
+          buildHeader(paddingTB, context, 'Unsere Partner'),
+          Row(
+            children: [
+              Container(
+                height: usableHeight * 0.05,
+                width: MediaQuery.of(context).size.width * 0.2,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image:
+                        AssetImage('lib/assets/images/background_header.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Placeholder(
-            fallbackHeight: usableHeight * 0.2,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: paddingLR * 1.8),
+                child: Container(
+                  height: usableHeight * 0.05,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image:
+                          AssetImage('lib/assets/images/background_header.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: usableHeight * 0.05,
+                width: MediaQuery.of(context).size.width * 0.2,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image:
+                        AssetImage('lib/assets/images/background_header.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 
-  Padding buildStories(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+  Padding buildStories(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: paddingTB),
-              child: Text(
-                'Erfolgsgeschichten',
-                style: Theme.of(context).textTheme.headline2,
-              ),
-            ),
-          ),
+          buildHeader(paddingTB, context, 'Erfolgsgeschichten'),
           Text(
             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
             style: Theme.of(context).textTheme.bodyText1,
           ),
+          buildButton(context, 'Erfahren Sie mehr', const NotImplemented_Screen()),
         ],
       ),
     );
   }
 
-  Padding buildCareer(
-      double usableHeight, double paddingLR, double paddingTB, context) {
+  Padding buildCareer(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
       child: Container(
-        height: usableHeight * 0.45,
+        height: usableHeight * 0.55,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -121,6 +144,7 @@ class Home_Screen extends StatelessWidget {
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
                 style: Theme.of(context).textTheme.bodyText1,
               ),
+              buildButton(context, 'Bewirb dich jetzt!', const Career_Screen()),
             ],
           ),
         ),
@@ -134,20 +158,13 @@ class Home_Screen extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: paddingTB),
-              child: Text(
-                'Unsere Leistungen',
-                style: Theme.of(context).textTheme.headline2,
-              ),
-            ),
-          ),
+          buildHeader(paddingTB, context, 'Unsere Leistungen'),
           Text(
             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
             style: Theme.of(context).textTheme.bodyText1,
           ),
+          buildButton(context, 'Erfahren Sie mehr über unsere Leistungen',
+              const NotImplemented_Screen()),
         ],
       ),
     );
@@ -158,7 +175,7 @@ class Home_Screen extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
       child: Container(
-        height: usableHeight * 0.13,
+        height: usableHeight * 0.14,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -169,9 +186,13 @@ class Home_Screen extends StatelessWidget {
         child: Padding(
           padding:
               EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
-          child: Text(
-            'Besuchen Sie unsere Messe am 24.11.22',
-            style: Theme.of(context).textTheme.bodyText1,
+          child: Column(
+            children: [
+              Text(
+                'Besuchen Sie unsere Messe am 24.11.22',
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ],
           ),
         ),
       ),
@@ -182,9 +203,14 @@ class Home_Screen extends StatelessWidget {
       double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, 0.0, paddingLR, paddingTB),
-      child: Text(
-        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-        style: Theme.of(context).textTheme.bodyText1,
+      child: Column(
+        children: [
+          Text(
+            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          buildButton(context, 'Erfahren Sie mehr über Uns', const About_Screen())
+        ],
       ),
     );
   }
@@ -209,6 +235,35 @@ class Home_Screen extends StatelessWidget {
             'Mit IT-CONSULTING zum Ziel',
             style: Theme.of(context).textTheme.headline1,
           ),
+        ),
+      ),
+    );
+  }
+
+  Padding buildButton(BuildContext context, String str, Widget screen) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => screen,
+            ),
+          );
+        },
+        child: Text(str),
+      ),
+    );
+  }
+
+  Align buildHeader(double paddingTB, BuildContext context, String str) {
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Padding(
+        padding: EdgeInsets.only(bottom: paddingTB),
+        child: Text(
+          str,
+          style: Theme.of(context).textTheme.headline2,
         ),
       ),
     );

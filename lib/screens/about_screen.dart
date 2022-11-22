@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:it_consulting_webapp/screens/notImplemented_screen.dart';
 
 import '../modules/appbar_module.dart';
 import '../modules/drawer_module.dart';
@@ -39,8 +40,8 @@ class About_Screen extends StatelessWidget {
     );
   }
 
-  Padding buildPartners(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildPartners(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
@@ -61,12 +62,12 @@ class About_Screen extends StatelessWidget {
     );
   }
 
-  Padding buildTeam(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildTeam(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
       child: Container(
-        height: usableHeight * 0.5,
+        height: usableHeight * 0.6,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -90,6 +91,19 @@ class About_Screen extends StatelessWidget {
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
                 style: Theme.of(context).textTheme.bodyText1,
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const NotImplemented_Screen(),
+                      ),
+                    );
+                  },
+                  child: const Text('Zu den Mitarbeiterprojekten'),
+                ),
+              ),
             ],
           ),
         ),
@@ -97,8 +111,8 @@ class About_Screen extends StatelessWidget {
     );
   }
 
-  Padding buildInsights(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildInsights(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
@@ -220,8 +234,8 @@ class About_Screen extends StatelessWidget {
     );
   }
 
-  Padding buildIntroduction(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildIntroduction(double usableHeight, double paddingLR,
+      double paddingTB, BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, 0.0, paddingLR, paddingTB),
       child: Text(
@@ -231,8 +245,8 @@ class About_Screen extends StatelessWidget {
     );
   }
 
-  Container buildHero(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Container buildHero(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Container(
       height: usableHeight * 0.5,
       width: MediaQuery.of(context).size.width,
@@ -243,7 +257,8 @@ class About_Screen extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
+        padding:
+            EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
         child: Align(
           alignment: Alignment.bottomLeft,
           child: Text(

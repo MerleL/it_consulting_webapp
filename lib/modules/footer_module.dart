@@ -5,7 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Footer_Module extends StatefulWidget {
   const Footer_Module({Key? key}) : super(key: key);
-  //const Footer_Module(ScrollController test, {Key? key}) : super(key: key);
+
+  //const Footer_Module(ScrollController scrollController, {Key? key}) : super(key: key);
 
   @override
   State<Footer_Module> createState() => _Footer_ModuleState();
@@ -37,7 +38,6 @@ class _Footer_ModuleState extends State<Footer_Module> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildLogo(),
                 Padding(
@@ -65,6 +65,7 @@ class _Footer_ModuleState extends State<Footer_Module> {
                         ],
                       ),
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: buildTextLinks(paddingTB, paddingLR, context),
                       ),
                     ],
@@ -91,10 +92,11 @@ class _Footer_ModuleState extends State<Footer_Module> {
     return IconButton(
       icon: const Icon(Icons.arrow_upward),
       onPressed: () {
-        /*
-                    widget.scrollController.animateTo(0,
-                        duration: const Duration(milliseconds: 3),
-                        curve: Curves.linear);*/
+        /* Flutter Campus. "How to add ʺScroll Back to Topʺ Button in Flutter App." o.D. [Online] Available: https://www.fluttercampus.com/guide/218/add-scroll-back-to-top-button/ (Abrufdatum 17.11.2022)
+          widget.scrollController.animateTo(0,
+              duration: const Duration(milliseconds: 3),
+              curve: Curves.linear);
+         */
       },
     );
   }

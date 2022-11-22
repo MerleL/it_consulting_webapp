@@ -5,6 +5,6 @@ class NotImplemented_Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('This content is not implemented.');
+    return const Text('This content is not implemented.');
   }
 }

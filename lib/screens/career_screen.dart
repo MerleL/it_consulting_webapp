@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:it_consulting_webapp/screens/about_screen.dart';
 
 import '../modules/appbar_module.dart';
 import '../modules/drawer_module.dart';
 import '../modules/footer_module.dart';
 
-class Career_Screen extends StatelessWidget {
+class Career_Screen extends StatefulWidget {
   const Career_Screen({Key? key}) : super(key: key);
 
+  @override
+  State<Career_Screen> createState() => _Career_ScreenState();
+}
+
+class _Career_ScreenState extends State<Career_Screen> {
   @override
   Widget build(BuildContext context) {
     /* usable screen height = entire screen height - status bar height - appbar height
@@ -39,8 +45,8 @@ class Career_Screen extends StatelessWidget {
     );
   }
 
-  Padding buildContact(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildContact(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Column(
@@ -61,8 +67,8 @@ class Career_Screen extends StatelessWidget {
     );
   }
 
-  Padding buildJobs(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildJobs(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, paddingTB, 0.0, paddingTB),
       child: Column(
@@ -131,13 +137,17 @@ class Career_Screen extends StatelessWidget {
               ),
             ),
           ),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text('Weitere Stellen laden'),
+          ),
         ],
       ),
     );
   }
 
-  Padding buildBenefits(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Padding buildBenefits(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(paddingLR, paddingTB, paddingLR, paddingTB),
       child: Placeholder(
@@ -156,16 +166,34 @@ class Career_Screen extends StatelessWidget {
             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
             style: Theme.of(context).textTheme.bodyText1,
           ),
-          Placeholder(
-            fallbackHeight: usableHeight * 0.1,
-          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: Container(
+              width: 240,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const About_Screen(),
+                    ),
+                  );
+                },
+                child: Row(
+                  children: const [
+                    Text('Erfahren Sie mehr über uns'),
+                    Icon(Icons.arrow_forward_outlined),
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
   }
 
-  Container buildHero(
-      double usableHeight, double paddingLR, double paddingTB, BuildContext context) {
+  Container buildHero(double usableHeight, double paddingLR, double paddingTB,
+      BuildContext context) {
     return Container(
       height: usableHeight * 0.5,
       width: MediaQuery.of(context).size.width,

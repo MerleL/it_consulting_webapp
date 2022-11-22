@@ -56,12 +56,12 @@ class _Contact_ScreenState extends State<Contact_Screen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildTextFormField('Vorname', 'Ihren Vornamen', 1),
-            buildTextFormField('Name', 'Ihren Namen', 1),
-            buildTextFormField('Email', 'Ihre E-Mail-Adresse', 1),
-            buildTextFormField('Telefon', 'Ihre Telefonnummer', 1),
+            buildTextFormField('Vorname', 'Ihren Vornamen', 1, 2),
+            buildTextFormField('Name', 'Ihren Namen', 1, 2),
+            buildTextFormField('Email', 'Ihre E-Mail-Adresse', 1, 2),
+            buildTextFormField('Telefon', 'Ihre Telefonnummer', 1, 2),
             buildTextFormField(
-                'Wie können wir Ihnen weiterhelfen?', 'Ihre Nachricht', 5),
+                'Wie können wir Ihnen weiterhelfen?', 'Ihre Nachricht', 5, 50),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Center(
@@ -86,7 +86,7 @@ class _Contact_ScreenState extends State<Contact_Screen> {
     );
   }
 
-  Padding buildTextFormField(String useLabel, String hint, int min) {
+  Padding buildTextFormField(String useLabel, String hint, int min, int max) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextFormField(
@@ -94,7 +94,7 @@ class _Contact_ScreenState extends State<Contact_Screen> {
           labelText: useLabel,
           border: const OutlineInputBorder(),
         ),
-        maxLines: 10,
+        maxLines: max,
         minLines: min,
         validator: (value) {
           if (value == null || value.isEmpty) {
@@ -115,8 +115,11 @@ class _Contact_ScreenState extends State<Contact_Screen> {
           Container(
             height: usableHeight * 0.3,
             width: MediaQuery.of(context).size.width / 2 - paddingLR - 5,
-            decoration: BoxDecoration(
-              border: Border.all(),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('lib/assets/images/background_header.jpg'),
+                fit: BoxFit.cover,
+              ),
             ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -149,8 +152,11 @@ class _Contact_ScreenState extends State<Contact_Screen> {
             child: Container(
               height: usableHeight * 0.3,
               width: MediaQuery.of(context).size.width / 2 - paddingLR - 5,
-              decoration: BoxDecoration(
-                border: Border.all(),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('lib/assets/images/background_header.jpg'),
+                  fit: BoxFit.cover,
+                ),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -178,7 +184,7 @@ class _Contact_ScreenState extends State<Contact_Screen> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => NotImplemented_Screen(),
+                            builder: (context) => const NotImplemented_Screen(),
                           ),
                         );
                       },

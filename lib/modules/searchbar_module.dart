@@ -31,19 +31,22 @@ class _Searchbar_ModuleState extends State<Searchbar_Module> {
           width: double.infinity,
           height: 40,
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(5)),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+          ),
           child: Center(
             child: TextField(
               decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.search),
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: () {
-                      clearText();
-                    },
-                  ),
-                  hintText: 'Wonach suchen Sie?',
-                  border: InputBorder.none),
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: () {
+                    clearText();
+                  },
+                ),
+                hintText: 'Wonach suchen Sie?',
+                border: InputBorder.none,
+              ),
               controller: searchText,
             ),
           ),
